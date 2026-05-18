@@ -1,0 +1,45 @@
+# Secrets / runtime data
+.env
+.env.*
+!.env.example
+
+# SQLite & user data
+data/
+*.db
+*.db.bak.*
+bot/users.db*
+
+# Engine generated output
+out/
+bot/out/
+
+# Logs
+*.log
+bot/bot.err.log
+bot/bot.out.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# QRIS / private payment assets (replace with your own)
+assets/qris.jpg
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Catalog dumps (provider-specific)
+data/catalog/*.json
