@@ -42,8 +42,8 @@ db.init_db()
 log.info("DB ready")
 
 # Python interpreter for subprocesses (defaults to current). Override with
-# IMAJIN_PYTHON_BIN env var if you need a venv-specific binary.
-PYTHON_BIN = os.environ.get("IMAJIN_PYTHON_BIN", sys.executable)
+# BBFLOW_PYTHON_BIN env var if you need a venv-specific binary.
+PYTHON_BIN = os.environ.get("BBFLOW_PYTHON_BIN", sys.executable)
 
 # ============== Concurrency Pool ==============
 # Hybrid: free user (9router) bisa paralel, premium (Leonardo browser) sequential
@@ -281,7 +281,7 @@ POPULAR_MODELS = [
     ("Seedream 4.0",                "7e5ff500-3d59-48c1-8df5-e02ce740adf9"),
     ("Nano Banana",                 "af3189d3-4619-477d-a3e5-4f076a86e2eb"),
     ("GPT Image-1",                 "6df03351-1cef-47d4-a913-cd92a7d8b67b"),
-    ("Imajin Lightning",          "8a1d0979-42a5-419e-842d-5dcbb6c1ba75"),
+    ("BBFlow Lightning",          "8a1d0979-42a5-419e-842d-5dcbb6c1ba75"),
     # Style-focused presets
     ("Anime",                       "c157fc16-6144-4ff4-8582-56edfc682a7b"),
     ("Cinematic Kino",              "cf548be8-5349-4eaf-a8bf-f82597ffed6b"),
@@ -854,7 +854,7 @@ async def cmd_stats(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
     s = db.stats()
     success_rate = round(s['gen_success'] / s['gen_total'] * 100, 1) if s['gen_total'] > 0 else 0
     await update.message.reply_text(
-        f"📊 *Imajin AI — Statistics*\n"
+        f"📊 *BBFlow — Statistics*\n"
         f"━━━━━━━━━━━━━━━━━━━━━\n\n"
         f"👥 *USERS* ({s['users_total']:,} total)\n"
         f"  • Premium aktif:    {s['users_premium']:,}\n"
@@ -1645,7 +1645,7 @@ async def on_error(update: object, ctx: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 def main():
-    log.info("Starting Imajin AI (subprocess mode)...")
+    log.info("Starting BBFlow (subprocess mode)...")
 
     # concurrent_updates=True — proses banyak user paralel (TANPA ini, semua user antri 1-by-1!)
     # Bot pakai async semaphore di run_subprocess() untuk control real concurrency.
